@@ -22,9 +22,11 @@
     <section>
       <h4>回路を組んでみよう</h4>
       <p>ブレッドボードで実際にこんな配線を組んでみてください。</p>
-      <img src="https://drive.google.com/file/d/1gqmFwIhoF6DqCkvoW-l5arEhTaiZpn1V/view?usp=drive_link" alt="ブレッドボード配線イメージ">
+      <img src="https://drive.google.com/file/d/1gqmFwIhoF6DqCkvoW-l5arEhTaiZpn1V/view?usp=drive_link" width="800"
+        height="640" alt="ブレッドボード配線イメージ">
       <p>配線図で書くとこんな感じ。</p>
-      <img src="https://drive.google.com/file/d/1ewrMdt6-ViO0gBPLv59nGCx0EV-KN4eP/view?usp=drive_link" alt="配線図イメージ">
+      <img src="https://drive.google.com/file/d/1ewrMdt6-ViO0gBPLv59nGCx0EV-KN4eP/view?usp=drive_link" width="800"
+        height="640" alt="配線図イメージ">
       <p>回路の説明をします。
       <ul>
         <li>
@@ -40,58 +42,70 @@
     </section>
     <section>
       <h4>コードを書いてみよう</h4>
-      <p>コードを書いていきましょう
+      <p>
         どのように書いたら良いでしょうか？
         前回のコードを覚えているでしょうか？
         プッシュスイッチを押すと、LEDが点灯するプログラムです。
-        スイッチの状態をArduinoでモニターして、入力ピンが「HIGH」ならばLEDにつながっている出力ピンを「HIGH」にしてLEDをONしました。<br>
         <code>
           if(buttonPin === HIGH){
           digitalWrite(ledPin, HIGH);
           }
         </code>
+        スイッチの状態をArduinoでモニターして、入力ピンが「HIGH」ならばLEDにつながっている出力ピンを「HIGH」にしてLEDをONしました。<br>
+
         <br>
         でも、押している間しか点灯できませんでした。
         <br>
         今回は、スイッチを１回押すと「ON」の状態がずっと続き（これをトグルと言います）、もう一回押すと「OFF」になる、または次の状態（例えば次のLEDが「ON」される）に移行するということを実現しましょう。
         <br>
+      </p>
+
       <h4>コードの引用</h4>
+      <p>
+        まず、ArduinoIDEを起動します。<br>
+        ここで裏技（…というほどでもないのですが）を使います。
+        「ファイル」→「スケッチ例」とカーソルをもっていきます。ここで「02.Digital」→「StateChangeDetection」を選んでクリックしてください。<br>
+        新しいウィンドウが開いてコードがざっと出てきたと思います。<br>
 
-      まず、ArduinoIDEを起動します。<br>
-      ここで裏技（…というほどでもないのですが）を使います。
-      「ファイル」→「スケッチ例」とカーソルをもっていきます。ここで「02.Digital」→「StateChangeDetection」を選んでクリックしてください。<br>
-      新しいウィンドウが開いてコードがざっと出てきたと思います。<br>
+      </p>
 
-      <h4>コードを解説します</h4>
-      <h5>コメント</h5>
-      「/*」から 「*/」で囲われた部分はコメントです。以下のコードがどんな内容なのかが書かれています。
-      行中の「//」以下もコメントです。<br>
-      <h5>定数の宣言</h5>
+      <h4>コードを解説します　～ちょっとお芝居になぞらえて解説します～</h4>
+      <h5>コメント　～先頭のコメントはあらすじみたいなもの～</h5>
+      <p>
+        「/*」から 「*/」で囲われた部分はコメントです。以下のコードがどんな内容なのかが書かれています。
+        行中の「//」以下もコメントです。<br>
+      </p>
+
+      <h5>定数の宣言　～ピンに役割を振ります。いわゆるセットやもろもろの元～</h5>
       <code>
           // this constant won't change:<br>
           const int buttonPin = 2;  // the pin that the pushbutton is attached to<br>
           const int ledPin = 13;    // the pin that the LED is attached to<br>
         </code>
-      ここは説明するまでもないと思います。<br>
-      プッシュボタンをArduino の２番ピンに、LEDを１３番ピンに接続しましたという記述です。<br>
-      "const" というのは　”定数を宣言します”　という意味です。（このプログラムが動いている間中、２番と１３番の設定は絶対変えないからな!…と言っています）<br>
-      "int" は　”この数字は整数”　と言っています。いろいろな変数の『型』があるので、やっていくうちに出てくると思います。<br>
-      <h5>変数の宣言</h5>
+      <p>
+        ここは説明するまでもないと思います。<br>
+        プッシュボタンをArduino の２番ピンに、LEDを１３番ピンに接続しましたという記述です。<br>
+        "const" というのは　”定数を宣言します”　という意味です。（このプログラムが動いている間中、２番と１３番の設定は絶対変えないからな!…と言っています）<br>
+        "int" は　”この数字は整数”　と言っています。いろいろな変数の『型』があるので、やっていくうちに出てくると思います。<br>
+      </p>
+
+      <h5>変数の宣言　～登場人物とそのキャラを決めます～</h5>
       <code>
           // Variables will change:<br>
           int buttonPushCounter = 0;  // counter for the number of button presses<br>
           int buttonState = 0;        // current state of the button<br>
           int lastButtonState = 0;    // previous state of the button<br>
         </code>
-      <br>
-      "int"がまた出てきました。でも"const"が付いていないので、値が変わる可能性があるのです。<br>
-      "buttonPushCounter"やら"buttonState"やら"lastButtonState"はプログラマーが勝手に好きな名前をつけた『変数』名です。<br>
-      ”プッシュボタンカウンター（何回押したか数えてます）”　とか　”スイッチがONかOFFか”　とか　”ついさっきのスイッチはONかOFFか”　っていう変数です。<br>
-      ちなみに上で出てきた『定数』名もプログラマーが好きな名前をつけられます。<br>
-      今は変数に"0"を代入しています。初期化といいます。<br>
-      "int"が付いているので、整数値しか入りません。<br>
+      <p>
+        "int"がまた出てきました。でも"const"が付いていないので、値が変わる可能性があるのです。<br>
+        "buttonPushCounter"やら"buttonState"やら"lastButtonState"はプログラマーが勝手に好きな名前をつけた『変数』名です。<br>
+        ”プッシュボタンカウンター（何回押したか数えてます）”　とか　”スイッチがONかOFFか”　とか　”ついさっきのスイッチはONかOFFか”　っていう変数です。<br>
+        ちなみに上で出てきた『定数』名もプログラマーが好きな名前をつけられます。<br>
+        今は変数に"0"を代入しています。初期化といいます。<br>
+        "int"が付いているので、整数値しか入りません。<br>
+      </p>
 
-      <h5>セットアップです</h5>
+      <h5>セットアップです　～もろもろの設定を決めます。ここは光るよ、とかここには切穴あるからみたいな～</h5>
       <code>
           void setup() {<br>
             // initialize the button pin as a input:<br>
@@ -102,17 +116,20 @@
             Serial.begin(9600);<br>
           }
         </code>
-      <br>
-      "setup"関数を宣言してそれぞれのピンをインプットにするかアウトプットにするか設定します。<br>Arduinoの２番ピンと１３番ピンはデジタルピンですが、どちらにも対応できるように作られているため、プログラム側で指定してあげないとちゃんと動きません。お芝居のキャスティングみたいなものです。<br>
-"serial.begin(9600)"という記述はシリアル通信というパソコンなどとのやり取りをする規格の命令文です。ちなみに"9600bps"の速度で通信開始しますという宣言です。<br>
-<h5>メインループです</h5>
-<code>
-  // read the pushbutton input pin:<br>
-  buttonState = digitalRead(buttonPin);
-</code><br>
-”変数の宣言”のコーナーで宣言した変数 "buttonState" に定数 "buttonPin"（＝１３番ピン）の読み取り数値を代入します。
-"digitalRead"という命令文は
+      <p>
+        "setup"関数を宣言してそれぞれのピンをインプットにするかアウトプットにするか設定します。<br>Arduinoの２番ピンと１３番ピンはデジタルピンですが、どちらにも対応できるように作られているため、プログラム側で指定してあげないとちゃんと動きません。<br>
+        "serial.begin(9600)"という記述はシリアル通信というパソコンなどとのやり取りをする規格の命令文です。ちなみに"9600bps"の速度で通信開始しますという宣言です。<br>
       </p>
+      <h5>メインループです　～やっと本文。登場人物たちが動きます～</h5>
+      <code>
+        // read the pushbutton input pin:<br>
+        buttonState = digitalRead(buttonPin);<br>
+      </code>
+      <p>
+        ”変数の宣言”のコーナーで宣言した変数 "buttonState" に定数 "buttonPin"（＝１３番ピン）の読み取り数値を代入します。
+        "digitalRead"という命令文は指定したピン（＝１３番ピン）の状態を１か０かで読み取る命令です。
+      </p>
+
     </section>
 
   </main>

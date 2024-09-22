@@ -1,0 +1,138 @@
+/* common */
+
+body {
+  margin: 0;
+}
+
+
+h1 {
+  margin: 0;
+  padding-top: 36px;
+  padding-left: 8px;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+  padding: 16px 0;
+}
+
+h3 {
+  margin: 0;
+  
+}
+
+h4 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.shadowbox {
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, #ddd, 40%, #ccc);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: calc(100% - 64px);
+  box-sizing: border-box;
+}
+
+main {
+  padding-left: 32px;
+}
+
+code {
+  margin-top: 24px;
+  font: 16px bold;
+}
+
+/* header */
+
+header {
+  background: #ddd;
+  padding: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header img {
+  vertical-align: bottom;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* hero */
+.hero div {
+  padding: 24px auto 0;
+}
+
+.hero p {
+  margin: 16px 0;
+}
+
+.hero li {
+  list-style: none;
+}
+
+.circuit p {
+  padding-top: 24px;
+}
+
+.circuit img {
+  margin-top: 0;
+  background: #fff;
+}
+
+/* footer */
+footer {
+  background: #333;
+  text-align: center;
+  font-size: 12px;
+  padding: 18px 0;
+}
+
+small {
+  color: white;
+}
+
+/* large screen */
+
+@media (min-width: 800px) {
+  body {
+    background: rgb(158, 222, 248);
+  }
+
+  /* hero */
+
+  .breadbord {
+    display: flex;
+  }
+
+  .breadbord div {
+    flex: 1;
+    gap: 32px;
+  }
+
+  .circuit {
+    display: flex;
+    margin-top: 24px;
+  }
+
+  .circuit div {
+    flex: 1;
+  }
+
+  .circuit img {
+    margin: 32px 0;
+  }
+}

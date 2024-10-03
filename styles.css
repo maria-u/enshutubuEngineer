@@ -2,6 +2,8 @@
 
 body {
   margin: 0;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif, "Hiragino Keku Gothic ProN", Meiryo;
 }
 
 
@@ -38,7 +40,7 @@ p {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1040px;
   margin: 0 auto;
   width: calc(100% - 64px);
   box-sizing: border-box;
@@ -80,8 +82,8 @@ header h1 {
   margin: 16px 0;
 }
 
-.hero li {
-  list-style: none;
+.breadbord img {
+  padding-top: 36px;
 }
 
 .circuit p {
@@ -105,6 +107,12 @@ small {
   color: white;
 }
 
+/* to-top */
+.to-top {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
 /* large screen */
 
 @media (min-width: 800px) {

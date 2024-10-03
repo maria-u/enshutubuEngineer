@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>演出部エンジニアの…</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -22,10 +26,8 @@
             <h3>１個のプッシュスイッチで３個のLEDを操作しよう</h3>
             <div>
               <p>今回は、スイッチを押すたびにLEDの点灯が切り替わるような装置を考えてみます。<br>
-                つまりこんな感じ
               </p>
             </div>
-            <div><img src="#" alt="回路の動作イメージ"></div>
           </div>
         </section>
 
@@ -35,9 +37,11 @@
             <p>ブレッドボードで実際にこんな配線を組んでみてください。</p>
           </div>
           <div>
-            <img
-              src="https://raw.githubusercontent.com/maria-u/enshutubuEngineer/46b2967a62bb548d9899b09882cb96b98967f007/Spectacular%20Bruticus.png"
-              width="560" height="240" alt="ブレッドボード配線イメージ">
+            <a href="breadbordImage.html" target="_blank" class="glightbox">
+              <img
+                src="https://raw.githubusercontent.com/maria-u/enshutubuEngineer/46b2967a62bb548d9899b09882cb96b98967f007/Spectacular%20Bruticus.png"
+                width="560" height="240" alt="ブレッドボード配線イメージ" data-aos="flip-left" data-aos-anchor-placement="top-center" data-aos-duration="800">
+            </a>
           </div>
         </section>
 
@@ -46,7 +50,11 @@
             <p>配線図で書くとこんな感じ。</p>
           </div>
           <div>
-            <img src="https://raw.githubusercontent.com/maria-u/enshutubuEngineer/e6d4e8f979d5674b2d2ab4c4c6dda1c895efb0e9/circuit.svg" width="500" height="400" alt="配線図イメージ">
+            <a href="circuitImage-1.html" target="_blank" class="glightbox">
+              <img
+                src="https://raw.githubusercontent.com/maria-u/enshutubuEngineer/e6d4e8f979d5674b2d2ab4c4c6dda1c895efb0e9/circuit.svg"
+                width="500" height="400" alt="配線図イメージ" data-aos="zoom-out" data-aos-anchor-placement="top-center" data-aos-durantion="1000" data-aos-ease="ease-in-out">
+            </a>
           </div>
         </section>
 
@@ -70,18 +78,20 @@
             どのように書いたら良いでしょうか？
             前回のコードを覚えているでしょうか？
             プッシュスイッチを押すと、LEDが点灯するプログラムです。
-            <code>
-              if(buttonPin === HIGH){
-                digitalWrite(ledPin, HIGH);
-              }
-           </code>
-            スイッチの状態をArduinoでモニターして、入力ピンが「HIGH」ならばLEDにつながっている出力ピンを「HIGH」にしてLEDをONしました。<br>
+          <pre class="code" data-aos="fade-up" data-aos-duration="800">
+              <code>
+                if(buttonPin === HIGH){
+                  digitalWrite(ledPin, HIGH);
+                }
+             </code>
+            </pre>
+          スイッチの状態をArduinoでモニターして、入力ピンが「HIGH」ならばLEDにつながっている出力ピンを「HIGH」にしてLEDをONしました。<br>
 
-            <br>
-            でも、押している間しか点灯できませんでした。
-            <br>
-            今回は、スイッチを１回押すと「ON」の状態がずっと続き（これをトグルと言います）、もう一回押すと「OFF」になる、または次の状態（例えば次のLEDが「ON」される）に移行するということを実現しましょう。
-            <br>
+          <br>
+          でも、押している間しか点灯できませんでした。
+          <br>
+          今回は、スイッチを１回押すと「ON」の状態がずっと続き（これをトグルと言います）、もう一回押すと「OFF」になる、または次の状態（例えば次のLEDが「ON」される）に移行するということを実現しましょう。
+          <br>
           </p>
 
           <h3>コードの引用</h3>
@@ -104,11 +114,13 @@
             </li>
             <li>
               <h4>定数の宣言　～ピンに役割を振ります。いわゆるセットや音響、照明、もろもろの元～</h4>
-              <code>
-                // this constant won't change:<br>
-                const int buttonPin = 2;  // the pin that the pushbutton is attached to<br>
-                const int ledPin = 13;    // the pin that the LED is attached to<br>
-              </code>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  // this constant won't change:
+                  const int buttonPin = 2;  // the pin that the pushbutton is attached to
+                  const int ledPin = 13;    // the pin that the LED is attached to
+                </code>
+              </pre>
               <p>
                 ここは説明するまでもないと思います。<br>
                 プッシュボタンをArduino の２番ピンに、LEDを１３番ピンに接続しましたという記述です。<br>
@@ -118,12 +130,14 @@
             </li>
             <li>
               <h4>変数の宣言　～登場人物とそのキャラを決めます～</h4>
-              <code>
-                // Variables will change:<br>
-                int buttonPushCounter = 0;  // counter for the number of button presses<br>
-                int buttonState = 0;        // current state of the button<br>
-                int lastButtonState = 0;    // previous state of the button<br>
-              </code>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  // Variables will change:
+                  int buttonPushCounter = 0;  // counter for the number of button presses
+                  int buttonState = 0;        // current state of the button
+                  int lastButtonState = 0;    // previous state of the button
+                </code>
+              </pre>
               <p>
                 "int"がまた出てきました。でも"const"が付いていないので、値が変わる可能性があるのです。<br>
                 "buttonPushCounter"やら"buttonState"やら"lastButtonState"はプログラマーが勝手に好きな名前をつけた『変数』名です。<br>
@@ -135,16 +149,18 @@
             </li>
             <li>
               <h4>セットアップです　～もろもろの設定を決めます。ここは光るよ、とかここには切穴あるからみたいな～</h4>
-              <code>
-                void setup() {<br>
-                  // initialize the button pin as a input:<br>
-                  pinMode(buttonPin, INPUT);<br>
-                  // initialize the LED as an output:<br>
-                  pinMode(ledPin, OUTPUT);<br>
-                  // initialize serial communication:<br>
-                  Serial.begin(9600);<br>
-                }
-              </code>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  void setup() {
+                    // initialize the button pin as a input:
+                    pinMode(buttonPin, INPUT);
+                    // initialize the LED as an output:
+                    pinMode(ledPin, OUTPUT);
+                    // initialize serial communication:
+                    Serial.begin(9600);
+                  }
+                </code>
+              </pre>
               <p>
                 "setup"関数を宣言してそれぞれのピンをインプットにするかアウトプットにするか設定します。<br>Arduinoの２番ピンと１３番ピンはデジタルピンですが、どちらにも対応できるように作られているため、プログラム側で指定してあげないとちゃんと動きません。<br>
                 "serial.begin(9600)"という記述はシリアル通信というパソコンなどとのやり取りをする規格の命令文です。ちなみに"9600bps"の速度で通信開始しますという宣言です。<br>
@@ -152,14 +168,116 @@
             </li>
             <li>
               <h4>メインループです　～本文。登場人物たちが動き出します～</h4>
-              <code>
-                // read the pushbutton input pin:<br>
-                buttonState = digitalRead(buttonPin);<br>
-              </code>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  // read the pushbutton input pin:
+                  buttonState = digitalRead(buttonPin);
+                </code>
+              </pre>
               <p>
                 ”変数の宣言”のコーナーで宣言した変数 "buttonState" に定数 "buttonPin"（＝１３番ピン）の読み取り数値を代入します。
                 "digitalRead"という命令文は指定したピン（＝１３番ピン）の状態を１か０かで読み取る命令です。
               </p>
+              <p>次のブロックいきますよ。</p>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  // compare the buttonState to its previous state
+                  if (buttonState != lastButtonState) {
+                    // if the state has changed, increment the counter
+                    if (buttonState == HIGH) {
+                      // if the current state is HIGH then the button went from off to on:
+                      buttonPushCounter++;
+                      Serial.println("on");
+                      Serial.print("number of button pushes: ");
+                      Serial.println(buttonPushCounter);
+                    } else {
+                      // if the current state is LOW then the button went from on to off:
+                      Serial.println("off");
+                    }
+                    // Delay a little bit to avoid bouncing
+                    delay(50);
+                  }
+                </code>
+              </pre>
+              <p>
+                な…長い！　って思わないでください。<br>
+                大まかな構造さえ掴んでいれば、あとはひとつひとつ処理していくだけですから。<br>
+                <br>
+                一番上の "//"
+                の付いている一行のコメントを見てみましょう。"ボタンステート（つまりボタンの状態がONかOFFか）をついさっきのボタンの状態と比べる"とあります。出番を待つ役者や転換をスタンバイしている演出部みたいのものですね。キッカケを待っています。わかりやすく言うとキューランプが変化したかどうかをじっと見ている感じ。<br>
+                <br>
+                "if"文に関しては以前お話しましたね。<br>
+                カッコ内の条件をクリアしていれば、"{}" の中を実行するというものでしたね。<br>
+                " != " という記号が出てきます。ビックリマークはここでは否定の意味です。<br>
+                <br>
+                次のコメントも読んでみましょう。
+                "ステートが変化していたら、カウンター値を加算する" と書かれていますね。<br>
+                <br>
+                更に条件分岐します。
+                条件は、 "読み取ったボタンステートが "HIGH" であること" 。　５行くらい先に "else" で条件を満たさない場合の処理もありました。<br>
+              </p>
+              <ol>
+                <li>条件を満たす場合（ "buttonState" が "HIGH"）
+                  <ul>
+                    <li>"buttonPushCounter"の値を１増やす（"++" は "buttonPushCounter = buttonPushCounter + 1;" と同じ意味です。） </li>
+                    <li>パソコンなどのコンソール画面に "on" と表示するようにデータを送る。</li>
+                    <li>同様に"number of button pushes:" と表示させる。</li>
+                    <li>さっき＋１した "buttonPushCounter" の値を表示させる。</li>
+                  </ul>
+                </li>
+                <li>条件を満たせない場合（"buttonState" が "LOW" ）
+                  <ul>
+                    <li> "off" を表示させる</li>
+                  </ul>
+                </li>
+              </ol>
+              <p>
+                ２回目の条件分岐の判定のあとで、0.05秒待つ（0.05秒何もしない）<br>
+                この行のコメントを読んでみます。"// Delay a little bit to avoid bouncing"<br>
+                "バウンシングを防ぐためにほんのちょっと待つ"とあります。<br>
+                物理的に動作するスイッチはバウンシングという現象が起こります。特に押ボタンスイッチは顕著です。これは人の操作ミス（ちょっと触れちゃったとか）、ボタンの跳ね返り（勢いよく押すと跳ね返って２回目いっちゃうとか）、静電気の状態などで起こりえます。<br>この間違えを帳消しにするために、この処理を入れます。<br>
+                "ちょっとセリフを噛んだぐらいじゃ芝居は止めないよ!" って感じでしょうか。<br>
+              </p>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  // save the current state as the last state, for next time through the loop
+                  lastButtonState = buttonState;
+                </code>
+              </pre>
+              <p>
+                これ結構重要です。<br>
+                "lastButtonState"("さっきのアレ")に "bottonState"("いまのアレ"の値)を代入します。<br>
+                なんでこんなことをするのでしょうか？<br>
+                <br>
+                コードの "loop" の頭に戻ってみましょう。ここでボタンの状態を読み取り "buttonState" に入れました（HIGH か LOW）<br>
+                条件分岐でこれ（"いまのアレ") と、 "lastButtonState"(さっきのアレ)を比較しています。<br>
+                つまりボタンの状態に変化があるかどうか判定しているわけですが、プロセッサーの中ではこれを1000分の1秒単位で行っています。1秒間に何百回も "いまのアレ" と "さっきのアレ" が同じかどうかを比べています。<br>
+                これが、ボタンを押したときにだけ "on" になる、押さないときは "off" になる正体です。<br>
+              </p>
+              <p>最後のブロックです。<br></p>
+              <pre class="code" data-aos="fade-up" data-aos-duration="800">
+                <code>
+                  if (buttonPushCounter % 4 == 0) {
+                    digitalWrite(ledPin, HIGH);
+                  } else {
+                    digitalWrite(ledPin, LOW);
+                  }
+                </code>
+              </pre>
+              <p>
+                上のブロックで加算した "buttonPushCounter" の値を判定します。<br>
+                "%" は剰余を求める演算子ですね。なので 0 か 1 か 2 か 3 が得られますね。ここでは 0 かそれ以外で分けています。<br>
+                カウンターの値がどんなに大きくなろうとも、4で割り切れればLEDをONにする。それ以外は消灯です。<br>
+                <br>
+                普段の生活ではあまり使いませんが、プログラミングでは "%" 演算子は良く出てきます。<br>
+                <br>
+
+              </p>
+              <pre>
+  <code>
+
+  </code>
+</pre>
             </li>
           </ul>
         </section>
@@ -170,6 +288,20 @@
     <small>© CopyRight 2024
       ショー・ツールズ</small>
   </footer>
+
+  <a href="#" class="to-top">先頭へ</a>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+  const lightbox = GLightbox();
+</script>
+
 </body>
 
 </html>

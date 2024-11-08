@@ -23,7 +23,7 @@
         <section>
           <h2>今月のお題</h2>
           <div>
-            <h3>１個のプッシュスイッチで３個のLEDを操作しよう</h3>
+            <h3>１個のプッシュスイッチで３個のLEDを操作しよう～その１</h3>
             <div>
               <p>今回は、スイッチを押すたびにLEDの点灯が切り替わるような装置を考えてみます。<br>
               </p>
@@ -273,13 +273,34 @@
                 <br>
 
               </p>
-              <pre>
-  <code>
-
-  </code>
-</pre>
             </li>
           </ul>
+        </section>
+
+        <section class="videoPlay">
+          <h3>実際にコードを書き込んで動かしてみましょう</h3>
+          <p>Arduino にコードを流し込むやり方覚えていますか？<br>
+            え！？　ってなったら、もう一度復習します。
+            といっても、ここで説明するのは長くなって面倒なので、他者のリンクで申し訳ないのですが貼っておきます。『ツール・ラボ』というサイトの<cite><a href="https://tool-lab.com/arduino-basic-1-11/" target="_blank">こちら</a> </cite>を参照してみてください。<br>
+            肝心なことは、中盤あたりの『動かしてみよう！』以下にわかりやすく書いてありますので参考にしてください。<br>
+            
+          </p>
+          <h4>さて動かしてみましょう</h4>
+          <video controls playsinline width="640" data-aos="slide-left" data-aos-duration="1000">
+            <source src="https://github.com/maria-u/enshutubuEngineer/raw/57a41023f14302551dce8fbff26221fdb9a453e4/Movie1.mp4" alt="動作動画１">
+          </video>
+          <p>はい。一番最初はLEDが点灯から始まります。buttonPushCounter が０だからですね。そして、１回ボタンを押すと消えます。２，３も消灯したままです。４回目でまた点灯。これの繰り返しです。<br><br>
+            唐突ではありますが、ちょっと長くなったので今回はここまでとします。<br>
+          おやおや？　LEDを３つもセットしたのに反応するのは１個だけかよ！ て思いません？<br>
+          はい、次回はこの続きです。１個のボタンで３つのLEDを切り替えていきます。でもカンの良いあなた、なんとなく糸口が見えてきたでしょう？　ちょっとでもやってみてください。</p>
+        </section>
+        <section class="notice">
+          <h2>次回予告</h2>
+          <h3>１個のプッシュスイッチで３個のLEDを操作しよう～その２</h3>
+          <p>コード上で残りのLEDを指定して順繰りに点灯させるプログラムを完成させましょう。</p>
+          <h2>第３回予告</h2>
+          <h3>基盤に部品をはんだ付けしよう</h3>
+          <p>一度Arduinoから離れて、はんだ付けの実践練習をします。基盤と部品を送りますので、どうぞお楽しみに。</p>
         </section>
       </div>
     </section>
@@ -289,7 +310,7 @@
       ショー・ツールズ</small>
   </footer>
 
-  <a href="#" class="to-top">先頭へ</a>
+  <a href="#" class="to-top" data-aos="fade-up">先頭へ</a>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>

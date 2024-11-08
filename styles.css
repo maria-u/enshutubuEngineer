@@ -42,7 +42,7 @@ p {
 .container {
   max-width: 1040px;
   margin: 0 auto;
-  width: calc(100% - 64px);
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -84,15 +84,26 @@ header h1 {
 
 .breadbord img {
   padding-top: 36px;
+  padding-right: 24px;
 }
 
 .circuit p {
   padding-top: 24px;
+  padding-right: 24px;
 }
 
 .circuit img {
   margin-top: 0;
+  padding-right: 24px;
   background: #fff;
+}
+
+.notice {
+  border: 8px orange solid;
+  margin: 0;
+  padding-left: 12px;
+  margin-bottom: 24px;
+  text-align: center;
 }
 
 /* footer */
@@ -109,10 +120,12 @@ small {
 
 /* to-top */
 .to-top {
+  color: violet;
   position: fixed;
   bottom: 16px;
   right: 16px;
 }
+
 /* large screen */
 
 @media (min-width: 800px) {
